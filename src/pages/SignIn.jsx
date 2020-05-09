@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function SignIn() {
   const [inputs, setInputs] = useState({
-    usename: '',
+    id: '',
     password: '',
   });
-  const { username, password } = inputs;
+  const { id, password } = inputs;
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -23,7 +24,7 @@ function SignIn() {
         <form name="form" onSubmit={handleSubmit}>
           <div>
             <label>ID</label>
-            <input type="text" name="id" value={username} onChange={handleChange} />
+            <input type="text" name="id" value={id} onChange={handleChange} />
           </div>
           <div>
             <label>PW</label>
@@ -31,6 +32,7 @@ function SignIn() {
           </div>
           <div>
             <button>Login</button>
+            <Link to="/register">Register</Link>
           </div>
         </form>
       </div>
