@@ -1,8 +1,24 @@
-import config from '../config';
+import { API } from '../config';
 
 export const userService = {
   register,
+  login,
+  logout,
 };
+
+function login(id, password) {
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id, password }),
+  };
+
+  return fetch(API.USER_LOGIN_URL, requestOptions).then(handleResponse);
+}
+
+function logout() {
+  localStorage.removeItem('user');
+}
 
 function register(user) {
   const requestOptions = {
@@ -11,7 +27,7 @@ function register(user) {
     body: JSON.stringify(user),
   };
 
-  return fetch(config.API.USER_REGISTER_URL, requestOptions).then(handleResponse);
+  return fetch(API.USER_REGISTER_URL, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
