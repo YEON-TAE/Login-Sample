@@ -1,7 +1,6 @@
-const config = {
-  API: {
-    USER_REGISTER_URL: 'registerURL',
-  },
+const API = {
+  USER_REGISTER_URL: 'registerURL',
+  USER_LOGIN_URL: 'loginURL',
 };
 
-export default config;
+export { API };

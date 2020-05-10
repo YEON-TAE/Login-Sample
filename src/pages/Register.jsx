@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userActions } from '../actions';
 
-function SignUp() {
+function Register() {
   const [user, setUser] = useState({
     id: '',
     password: '',
@@ -28,7 +28,7 @@ function SignUp() {
 
   return (
     <div>
-      <h2>Sign Up</h2>
+      <h2>Register</h2>
       <div>
         <form name="form" onSubmit={handleSubmit}>
           <div>
@@ -61,4 +61,4 @@ function SignUp() {
   );
 }
 
-export { SignUp };
+export { Register };
