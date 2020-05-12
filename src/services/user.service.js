@@ -1,4 +1,4 @@
-import { API } from '../config';
+// import { API } from '../config';
 
 export const userService = {
   register,
@@ -13,7 +13,14 @@ function login(id, password) {
     body: JSON.stringify({ id, password }),
   };
 
-  return fetch(API.USER_LOGIN_URL, requestOptions).then(handleResponse);
+  return fetch('/users/authenticate', requestOptions)
+    .then(handleResponse)
+    .then((user) => {
+      // store user details and jwt token in local storage to keep user logged in between page refreshes
+      localStorage.setItem('user', JSON.stringify(user));
+
+      return user;
+    });
 }
 
 function logout() {
@@ -27,7 +34,7 @@ function register(user) {
     body: JSON.stringify(user),
   };
 
-  return fetch(API.USER_REGISTER_URL, requestOptions).then(handleResponse);
+  return fetch('/users/register', requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
