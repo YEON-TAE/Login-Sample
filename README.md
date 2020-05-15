@@ -1,3 +1,3 @@
-# BJ
+# Login Sample
 
-Battle Judging
+Login Sample
